@@ -8,17 +8,17 @@ class MainButton extends HookConsumerWidget {
   const MainButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _tapped = useState(false);
+    final tapped = useState(false);
     return GestureDetector(
       onTap: () {
-        _tapped.value = true;
+        tapped.value = true;
         Timer(const Duration(seconds: 1), (){
-          _tapped.value = false;
+          tapped.value = false;
         });
       },
       child: AnimatedContainer(
         height: 50,
-        width: _tapped.value ? 50 : 120,
+        width: tapped.value ? 50 : 120,
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.circular(50),
@@ -26,7 +26,7 @@ class MainButton extends HookConsumerWidget {
         margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(5),
         duration: const Duration(milliseconds: 300),
-        child: _tapped.value
+        child: tapped.value
             ? const CircularProgressIndicator(
                 color: Colors.white,
               )
